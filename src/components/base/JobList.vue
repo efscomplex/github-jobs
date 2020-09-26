@@ -1,6 +1,14 @@
 <template>
    <div class='job-list' >
-      <JobCard v-bind='job' v-for='(job, i) in jobs' :key='i' />
+      <JobCard 
+         :description='job.description' 
+         :title='job.title' 
+         :company='job.company' 
+         :location='job.location'
+         :fullTime='job.fullTime'
+         :logo='job.company_logo'
+         v-for='job in jobs' 
+         :key='job.id' />
    </div>
 </template>
 
@@ -22,4 +30,6 @@ export default {
    display: flex
    flex-direction: column
    gap: 2rem 0
+   @media (max-width: 620px)
+      align-items: center
 </style>

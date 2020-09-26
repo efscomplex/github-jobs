@@ -1,15 +1,15 @@
 <template>
   <aside>
-     <Checkbox label='Full Time'/>
+     <Checkbox type='full time' truly='true' label='Full Time' />
      <div class='location'>
         <h4 class='text'>Location</h4>
-        <Search icon='location_on' class='search' placeholder='City, State, Zip Code or Country'/>
+        <Search icon='location_on' type='location' class='search' placeholder='City, State, Zip Code or Country'/>
      </div>
      <div class='places'>
-        <Checkbox label='Lonton'/>
-        <Checkbox label='Amsterdam'/>
-        <Checkbox label='New York'/>
-        <Checkbox label='Berlin'/>
+        <Checkbox type='location' label='Lonton'/>
+        <Checkbox type='location' label='Amsterdam'/>
+        <Checkbox type='location' label='New York'/>
+        <Checkbox type='location' label='Berlin'/>
      </div>
   </aside>
 </template>
@@ -30,6 +30,7 @@ export default {
 aside
    grid-area: aside
    .search
+      width: 100%
       max-width: 40ch
       input
          margin: initial

@@ -6,14 +6,20 @@
    font-size: 18px
 
    padding: 2rem
+
    min-height: 100vh
+   max-width: 1220px
+   margin: auto
 
    display: grid
    grid-gap: 1rem
    grid-template-areas: 'header header' 'aside main' 'footer footer'
    grid-template-rows: min-content 1fr min-content
-   grid-template-columns: 3fr 5fr
+   grid-template-columns: min-max(40ch, 40%) 1fr
    @media (max-width: 870px)
+      padding: 0
+      & > *:not(header) 
+         padding: 1rem
       grid-template-areas: 'header' 'aside' 'main' 'footer'
       grid-template-columns: 1fr
       grid-template-rows: min-content min-content 1fr min-content

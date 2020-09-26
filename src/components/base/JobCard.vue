@@ -1,9 +1,10 @@
 <template>
    <div class='card'>
-      <img :src='pic' class='job-pic'/>
+      <img :src='logo' class='logo'/>
       <div class="body">
+         <div class="company">{{company}}</div>
+         <strong class="title">{{title}}</strong>
          <div class="location">{{location}}</div>
-         <div class="description">{{description}}</div>
          <div class="full-time">{{fullTime}}</div>
       </div>
       <div class="footer">
@@ -21,10 +22,12 @@
          Icon
       },
       props: {
-         pic: String,
+         logo: String,
          location: String,
          description: String,
-         fullTime: String
+         fullTime: String,
+         company: String,
+         title: String
       }
    }
 </script>
@@ -37,23 +40,32 @@
    background-color: white
    border-radius: 9px
    gap: 0 1rem
-   .job-pic
+   @media(max-width: 620px)
+      flex-wrap: wrap
+      gap: 1rem
+      justify-content: center
+   .logo
       width: 120px
       height: 90px
-      object-fit: cover
+      object-fit: contain
       object-position: center
    .body
       display: flex
       flex-direction: column
       gap: .6rem
       flex-grow: 1
+      @media(max-width: 620px)
+         flex-grow: initial
+      .company
+      .title
+         font-size: 1.1rem
       .full-time
          border: 1px solid gray
          border-radius: 6px
          padding: 4px 1rem
          width: fit-content
       .description
-         text-transform: uppercase
+         font-size: .8rem  
    .footer 
       display: flex
       gap: 0 1em

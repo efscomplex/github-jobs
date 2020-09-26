@@ -3,25 +3,37 @@
       <slot name='icon'>
          <i class="material-icons md-18">{{icon}}</i>
       </slot>
-      <input type='text' :placeholder='placeholder'/>
+      <input type='text' :placeholder='placeholder' v-on:keyup='next'/>
       <slot></slot>
    </div>
 </template>
 
 <script>
-
+import { inject } from 'vue'
 export default {
-   props:{
+   props:{  
       icon: {
          type: String,
          default: 'search'
+      },
+      placeholder: {
+         type: String,
+         default: 'title, companies, expertise or benefices'
+      },
+      type: {
+         type: String,
+         required: true
       }
    },
-   setup(){
-      const placeholder = 'title, companies, expertise or benefices'
+   setup(props){
+      const input$ = inject('input$')
+      const next = event => input$.next({
+         type: props.type.toUpperCase(),
+         payload: event.target.value
+      })
 
       return {
-         placeholder
+         next
       }
    }
 }

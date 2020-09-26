@@ -1,46 +1,21 @@
 <template>
   <main class='main'>
-     <JobList :jobs='jobs'/>
+     <JobList :jobs='jobs' class='job-list'/>
   </main>
 </template>
 
 <script>
 import JobList from '@/components/base/JobList'
-import { ref } from 'vue'
 
-const mockJobs = [
-   {
-      description: 'javascript',
-      fullTime: 'full time',
-      location: 'Denver, Colorado',
-      pic:'https://picsum.photos/200/300'
-
-   },
-   {
-      description: 'javascript',
-      fullTime: 'full time',
-      location: 'Denver, Colorado',
-      pic:'https://picsum.photos/200/300'
-
-   },
-   {
-      description: 'javascript',
-      fullTime: 'full time',
-      location: 'Denver, Colorado',
-      pic:'https://picsum.photos/200/300'
-
-   }
-]
 export default {
+   props: {
+      jobs: Array
+   },
    components: {
       JobList
    },
-   setup(){
-      const jobs = ref(mockJobs)
-
-      return {
-         jobs
-      }
+   setup(props){
+      console.log(props.jobs);
    }
 }
 </script>
@@ -48,4 +23,7 @@ export default {
 <style lang='sass' scoped>
 main
    grid-area: main
+   .job-list
+      max-width: 720px
+      margin: auto
 </style>
